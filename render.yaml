@@ -10,5 +10,15 @@ services:
         value: production
       - key: PORT
         value: 3000
+      - key: CORS_ORIGIN
+        value: "*"
+      - key: API_VERSION
+        value: "v1"
+      - key: LOG_LEVEL
+        value: "info"
+      - key: MAX_FILE_SIZE
+        value: "10mb"
+      - key: REQUEST_TIMEOUT
+        value: "30000"
     healthCheckPath: /health
     autoDeploy: true

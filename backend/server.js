@@ -5,8 +5,32 @@ const path = require("path");
 const { v4: uuid } = require("uuid");
 
 const app = express();
-app.use(cors());
-app.use(express.json());
+
+// Environment variables with defaults
+const PORT = process.env.PORT || 3000;
+const CORS_ORIGIN = process.env.CORS_ORIGIN || "*";
+const API_VERSION = process.env.API_VERSION || "v1";
+const LOG_LEVEL = process.env.LOG_LEVEL || "info";
+const MAX_FILE_SIZE = process.env.MAX_FILE_SIZE || "10mb";
+const REQUEST_TIMEOUT = process.env.REQUEST_TIMEOUT || 30000;
+
+// CORS configuration
+app.use(cors({
+  origin: CORS_ORIGIN,
+  credentials: true
+}));
+
+// Body parser with configurable limits
+app.use(express.json({ limit: MAX_FILE_SIZE }));
+app.use(express.urlencoded({ extended: true, limit: MAX_FILE_SIZE }));
+
+// Request timeout middleware
+app.use((req, res, next) => {
+  req.setTimeout(REQUEST_TIMEOUT, () => {
+    res.status(408).json({ message: "Request timeout" });
+  });
+  next();
+});
 
 // Health check endpoint for Render
 app.get("/health", (req, res) => {
