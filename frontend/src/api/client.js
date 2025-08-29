@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { Platform } from 'react-native';
 
-const localBase = Platform.OS === 'android' ? 'http://10.0.2.2:3000' : 'http://localhost:3000';
-export const api = axios.create({ baseURL: localBase, timeout: 8000 });
+// Production API URL - Always use Render backend
+const productionBase = 'https://nextvolt.onrender.com';
+export const api = axios.create({ baseURL: productionBase, timeout: 8000 });
 
 export const getStations = () => api.get('/stations').then(r => r.data);
 export const getStation = (id) => api.get(`/stations/${id}`).then(r => r.data);
