@@ -369,7 +369,7 @@ app.post("/reachable-stations", async (req, res) => {
   // CORS ayarlarını production için güncelle
   app.use(cors({
     origin: process.env.NODE_ENV === 'production' 
-      ? ['https://your-frontend-domain.com'] 
+      ? ['https://nextvolt.onrender.com', 'http://localhost:3000', 'http://10.0.2.2:3000'] 
       : ['http://localhost:3000', 'http://10.0.2.2:3000'],
     credentials: true
   }));
