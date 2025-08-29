@@ -19,15 +19,23 @@
       }
     },
     "android": {
-      "permissions": ["ACCESS_FINE_LOCATION"],
+      "permissions": [
+        "ACCESS_FINE_LOCATION"
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.furkan.ozcelik.frontend"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1c30a960-6dac-4ff0-b95b-dd16155adcf3"
+      }
     }
   }
 }
