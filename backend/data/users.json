@@ -1,0 +1,27 @@
+[
+  {
+    "id": "430d4db7-caac-447f-b734-eb0fd73e09f3",
+    "username": "furkan",
+    "password": "1234",
+    "favorites": [
+      1,
+      3,
+      6,
+      42
+    ],
+    "history": [
+      "ZES - Galataport İstanbul (1:32:42 PM)",
+      "ZES - Galataport İstanbul (1:32:47 PM)",
+      "ZES - Galataport İstanbul (1:35:47 PM)",
+      "ZES - Galataport İstanbul (1:35:49 PM)",
+      "ZES - Galataport İstanbul (1:37:28 PM)",
+      "ZES - Galataport İstanbul (2:25:26 PM)",
+      "ZES - Galataport İstanbul (2:32:43 PM)",
+      "ZES - Galataport İstanbul (4:08:29 PM)",
+      "ZES - Galataport İstanbul (4:08:33 PM)",
+      "ZES - Galataport İstanbul (4:08:37 PM)",
+      "ZES - Galataport İstanbul (9:21:37 AM)"
+    ],
+    "reservations": []
+  }
+]

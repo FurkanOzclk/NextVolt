@@ -1,0 +1,1227 @@
+[
+  {
+    "id": 1,
+    "is_active": true,
+    "name": "Eşarj - Zorlu Center, Beşiktaş",
+    "address": "Levazım Mah. Koru Sok. No:2, P-4 Otopark, Beşiktaş",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.06521,
+    "longitude": 29.01588,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 10
+      },
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 4
+      }
+    ],
+    "price_per_kwh": 8.75,
+    "available": false,
+    "queue_time": 15,
+    "reserved_count": 2
+  },
+  {
+    "id": 2,
+    "is_active": true,
+    "name": "ZES - Cevahir AVM, Şişli",
+    "address": "Büyükdere Cad. No:22, P-2 Otopark, Şişli",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.0622,
+    "longitude": 28.9926,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 6
+      },
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 2
+      }
+    ],
+    "price_per_kwh": 8.9,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 1
+  },
+  {
+    "id": 3,
+    "is_active": true,
+    "name": "Trugo - İstanbul Havalimanı (IGA)",
+    "address": "Tayakadın, Terminal Cd No:1, Kat: P5 Turkuaz Otopark, Arnavutköy",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.2616,
+    "longitude": 28.7423,
+    "connections": [
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 8
+      }
+    ],
+    "price_per_kwh": 9.25,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 4,
+    "is_active": true,
+    "name": "Eşarj - Emaar Square Mall, Üsküdar",
+    "address": "Ünalan, Libadiye Cd No:88, P-3 Otopark, Üsküdar",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.0094,
+    "longitude": 29.0655,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 4
+      },
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 2
+      }
+    ],
+    "price_per_kwh": 8.75,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 5,
+    "is_active": true,
+    "name": "Shell Recharge - Kavacık",
+    "address": "Kavacık Mah. Fatih Sultan Mehmet Cad. No:1, Beykoz",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.0965,
+    "longitude": 29.1173,
+    "connections": [
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 1
+      },
+      {
+        "type_name": "CHAdeMO",
+        "type_official": "IEC 62196-3 Configuration AA",
+        "level": 3,
+        "num_connectors": 1
+      }
+    ],
+    "price_per_kwh": 9.05,
+    "available": false,
+    "queue_time": 10,
+    "reserved_count": 0
+  },
+  {
+    "id": 6,
+    "is_active": true,
+    "name": "ZES - Galataport İstanbul",
+    "address": "Kılıçali Paşa, Meclis-i Mebusan Cd. No:8, P2 Otopark, Beyoğlu",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.0261,
+    "longitude": 28.9814,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 8
+      }
+    ],
+    "price_per_kwh": 7.8,
+    "available": false,
+    "queue_time": 45,
+    "reserved_count": 3
+  },
+  {
+    "id": 7,
+    "is_active": true,
+    "name": "İspark - Kadıköy Rıhtım Katlı Otoparkı",
+    "address": "Caferağa, Rıhtım Cd., Kat -2, Kadıköy",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 40.9912,
+    "longitude": 29.0235,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 6
+      }
+    ],
+    "price_per_kwh": 7.5,
+    "available": false,
+    "queue_time": 20,
+    "reserved_count": 0
+  },
+  {
+    "id": 8,
+    "is_active": true,
+    "name": "ZES - Sabiha Gökçen Havalimanı",
+    "address": "Sanayi, Havaalanı İç Yolu, Katlı Otopark, Pendik",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 40.9022,
+    "longitude": 29.3148,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 4
+      },
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 2
+      }
+    ],
+    "price_per_kwh": 8.9,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 9,
+    "is_active": true,
+    "name": "Eşarj - Akasya AVM, Acıbadem",
+    "address": "Acıbadem, Çeçen Sokağı No:25, P-2 Katı, Üsküdar",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.0028,
+    "longitude": 29.0434,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 4
+      }
+    ],
+    "price_per_kwh": 7.95,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 1
+  },
+  {
+    "id": 10,
+    "is_active": true,
+    "name": "ZES - Ankamall AVM, Ankara",
+    "address": "Gazi Mah. Mevlana Bul. No:2, Yenimahalle",
+    "city": "Ankara",
+    "region": "Ankara",
+    "country": "TR",
+    "latitude": 39.95074,
+    "longitude": 32.81223,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 3
+      },
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 2
+      }
+    ],
+    "price_per_kwh": 8.9,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 11,
+    "is_active": true,
+    "name": "Eşarj - Kanyon AVM, Levent",
+    "address": "Büyükdere Cad. No:185, P-3 Otopark, Levent",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.0776,
+    "longitude": 29.0118,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 6
+      }
+    ],
+    "price_per_kwh": 7.95,
+    "available": false,
+    "queue_time": 5,
+    "reserved_count": 0
+  },
+  {
+    "id": 12,
+    "is_active": true,
+    "name": "Eşarj - Hilltown AVM, Küçükyalı",
+    "address": "Aydınevler, Siteler Yolu Cd No:28, Maltepe",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 40.9507,
+    "longitude": 29.1303,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 4
+      },
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 1
+      }
+    ],
+    "price_per_kwh": 8.5,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 13,
+    "is_active": true,
+    "name": "Trugo - Maslak 1453",
+    "address": "Maslak Mah. 1453 Cd. No:4, C-Blok Otopark, Sarıyer",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.1119,
+    "longitude": 28.9958,
+    "connections": [
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 2
+      }
+    ],
+    "price_per_kwh": 9.2,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 14,
+    "is_active": true,
+    "name": "ZES - Metropol İstanbul, Ataşehir",
+    "address": "Atatürk Mah, Ertuğrul Gazi Sk. No:2E, Ataşehir",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 40.9953,
+    "longitude": 29.1238,
+    "connections": [
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 1
+      },
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 3
+      }
+    ],
+    "price_per_kwh": 8.85,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 15,
+    "is_active": true,
+    "name": "Eşarj - Marmara Park AVM, Esenyurt",
+    "address": "Güzelyurt Mah., 1. Cadde No:33, Esenyurt",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.0022,
+    "longitude": 28.6946,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 4
+      }
+    ],
+    "price_per_kwh": 7.95,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 1
+  },
+  {
+    "id": 16,
+    "is_active": true,
+    "name": "Shell Recharge - Ataşehir",
+    "address": "Küçükbakkalköy, Vedat Günyol Cd. No:24, Ataşehir",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 40.9918,
+    "longitude": 29.1115,
+    "connections": [
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 2
+      }
+    ],
+    "price_per_kwh": 9.05,
+    "available": false,
+    "queue_time": 25,
+    "reserved_count": 0
+  },
+  {
+    "id": 17,
+    "is_active": true,
+    "name": "ZES - Raffles Hotel, Beşiktaş",
+    "address": "Levazım, Koru Sokağı Zorlu Center, Beşiktaş",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.0664,
+    "longitude": 29.0163,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 4
+      }
+    ],
+    "price_per_kwh": 8,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 1
+  },
+  {
+    "id": 18,
+    "is_active": false,
+    "name": "Trugo - Kadıköy Meydan (Planlanıyor)",
+    "address": "Rıhtım Caddesi, Kadıköy",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 40.9897,
+    "longitude": 29.0225,
+    "connections": [],
+    "price_per_kwh": null,
+    "available": false,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 19,
+    "is_active": true,
+    "name": "Eşarj - Forum İstanbul, Bayrampaşa",
+    "address": "Kocatepe, Paşa Cd. No:3, Bayrampaşa",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.0458,
+    "longitude": 28.8973,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 2
+      },
+      {
+        "type_name": "CHAdeMO",
+        "type_official": "IEC 62196-3 Configuration AA",
+        "level": 3,
+        "num_connectors": 1
+      },
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 1
+      }
+    ],
+    "price_per_kwh": 8.75,
+    "available": false,
+    "queue_time": 10,
+    "reserved_count": 0
+  },
+  {
+    "id": 20,
+    "is_active": true,
+    "name": "ZES - Aqua Florya AVM, Bakırköy",
+    "address": "Şenlikköy Mah. Yeşilköy Halkalı Cad. No: 93, Bakırköy",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 40.9634,
+    "longitude": 28.8049,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 4
+      }
+    ],
+    "price_per_kwh": 7.8,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 21,
+    "is_active": true,
+    "name": "Eşarj - Viaport Marina, Tuzla",
+    "address": "Cami Mah. Balıkçılar Sok. U-Blok, No: 20, Tuzla",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 40.8143,
+    "longitude": 29.3241,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 4
+      },
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 2
+      }
+    ],
+    "price_per_kwh": 8.65,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 22,
+    "is_active": true,
+    "name": "Trugo - Otoyol 5 Oksijen Tesisi O37",
+    "address": "İstanbul-İzmir Otoyolu, Km 125, Bursa",
+    "city": "Bursa",
+    "region": "Bursa",
+    "country": "TR",
+    "latitude": 40.3117,
+    "longitude": 28.7992,
+    "connections": [
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 4
+      }
+    ],
+    "price_per_kwh": 9.2,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 23,
+    "is_active": true,
+    "name": "ZES - İstinyePark İzmir",
+    "address": "Bahçelerarası Mah. Mithatpaşa Cd. No:1460, Balçova",
+    "city": "İzmir",
+    "region": "İzmir",
+    "country": "TR",
+    "latitude": 38.3975,
+    "longitude": 27.0682,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 4
+      },
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 1
+      }
+    ],
+    "price_per_kwh": 8.85,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 24,
+    "is_active": true,
+    "name": "Eşarj - Yalıkavak Marina, Bodrum",
+    "address": "Merkez Mah. Çökertme Cad., Yalıkavak",
+    "city": "Muğla",
+    "region": "Muğla",
+    "country": "TR",
+    "latitude": 37.1052,
+    "longitude": 27.2889,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 6
+      }
+    ],
+    "price_per_kwh": 8.25,
+    "available": false,
+    "queue_time": 15,
+    "reserved_count": 0
+  },
+  {
+    "id": 25,
+    "is_active": true,
+    "name": "Trugo - Bolu Dağı Dinlenme Tesisi",
+    "address": "Ankara-İstanbul Otoyolu, Elmalık Köyü Mevkii",
+    "city": "Bolu",
+    "region": "Bolu",
+    "country": "TR",
+    "latitude": 40.75112,
+    "longitude": 31.30541,
+    "connections": [
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 4
+      }
+    ],
+    "price_per_kwh": 9.2,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 26,
+    "is_active": true,
+    "name": "Shell Recharge - TerraCity AVM, Antalya",
+    "address": "Fener, Tekelioğlu Cd. No:55, Muratpaşa",
+    "city": "Antalya",
+    "region": "Antalya",
+    "country": "TR",
+    "latitude": 36.8524,
+    "longitude": 30.7561,
+    "connections": [
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 2
+      }
+    ],
+    "price_per_kwh": 9.1,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 27,
+    "is_active": false,
+    "name": "ZES - Armada AVM, Ankara (Devre Dışı)",
+    "address": "Beştepe Mahallesi, Dumlupınar Bulvarı No:6, Yenimahalle",
+    "city": "Ankara",
+    "region": "Ankara",
+    "country": "TR",
+    "latitude": 39.9118,
+    "longitude": 32.8123,
+    "connections": [],
+    "price_per_kwh": null,
+    "available": false,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 28,
+    "is_active": true,
+    "name": "Eşarj - Fişekhane, Zeytinburnu",
+    "address": "Kazlıçeşme Mah, Kennedy Cd. No:52, Zeytinburnu",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 40.9859,
+    "longitude": 28.9213,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 4
+      }
+    ],
+    "price_per_kwh": 7.95,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 2
+  },
+  {
+    "id": 29,
+    "is_active": true,
+    "name": "Trugo - Bağdat Caddesi, Caddebostan",
+    "address": "Caddebostan Mah. Bağdat Cad. No: 289, Kadıköy",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 40.963,
+    "longitude": 29.0706,
+    "connections": [
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 2
+      }
+    ],
+    "price_per_kwh": 9.3,
+    "available": false,
+    "queue_time": 20,
+    "reserved_count": 1
+  },
+  {
+    "id": 30,
+    "is_active": true,
+    "name": "İspark - Sultanahmet Meydanı Otoparkı",
+    "address": "Binbirdirek, Klodfarer Cd. No:2, Fatih",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.0069,
+    "longitude": 28.9744,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 4
+      }
+    ],
+    "price_per_kwh": 7.5,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 31,
+    "is_active": true,
+    "name": "ZES - Koç Üniversitesi Kampüsü, Sarıyer",
+    "address": "Rumelifeneri Yolu, Öğrenci Otoparkı, Sarıyer",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.2065,
+    "longitude": 29.0805,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 6
+      }
+    ],
+    "price_per_kwh": 7.7,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 32,
+    "is_active": true,
+    "name": "Eşarj - Mall of İstanbul, Başakşehir",
+    "address": "Ziya Gökalp, Süleyman Demirel Blv No:7, P5 Katı, Başakşehir",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.0668,
+    "longitude": 28.8078,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 4
+      },
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 2
+      }
+    ],
+    "price_per_kwh": 8.75,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 1
+  },
+  {
+    "id": 33,
+    "is_active": true,
+    "name": "Shell Recharge - Beylikdüzü E-5",
+    "address": "Barış, E-5 Karayolu Üzeri No:52, Beylikdüzü",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.0093,
+    "longitude": 28.6534,
+    "connections": [
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 2
+      }
+    ],
+    "price_per_kwh": 9.1,
+    "available": false,
+    "queue_time": 10,
+    "reserved_count": 0
+  },
+  {
+    "id": 34,
+    "is_active": true,
+    "name": "BP - Maltepe Sahil",
+    "address": "İdealtepe, Turgut Özal Blv., Maltepe",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 40.9413,
+    "longitude": 29.1172,
+    "connections": [
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 1
+      },
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 1
+      }
+    ],
+    "price_per_kwh": 8.95,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 35,
+    "is_active": true,
+    "name": "ZES - Orjin Maslak İş Merkezi",
+    "address": "Maslak, Eski Büyükdere Cd. No:27, Sarıyer",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.1042,
+    "longitude": 29.0182,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 4
+      }
+    ],
+    "price_per_kwh": 7.9,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 2
+  },
+  {
+    "id": 36,
+    "is_active": false,
+    "name": "Eşarj - Hilton Bomonti (Bakımda)",
+    "address": "Silahşör Caddesi No:42, Şişli",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.0568,
+    "longitude": 28.9808,
+    "connections": [],
+    "price_per_kwh": null,
+    "available": false,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 37,
+    "is_active": true,
+    "name": "İspark - Bakırköy Adliyesi Katlı Otoparkı",
+    "address": "Osmaniye, İsmail Erez Blv No:15, Bakırköy",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 40.9882,
+    "longitude": 28.8705,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 2
+      }
+    ],
+    "price_per_kwh": 7.5,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 38,
+    "is_active": true,
+    "name": "Trugo - Kuzey Marmara Otoyolu Fenertepe Tesisi",
+    "address": "Kuzey Marmara Otoyolu, Fenertepe Mevkii, Başakşehir",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.1685,
+    "longitude": 28.7901,
+    "connections": [
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 4
+      }
+    ],
+    "price_per_kwh": 9.25,
+    "available": false,
+    "queue_time": 5,
+    "reserved_count": 1
+  },
+  {
+    "id": 39,
+    "is_active": true,
+    "name": "ZES - Macrocenter, Göktürk",
+    "address": "Göktürk Merkez Mah. İstanbul Cad. No:16, Eyüpsultan",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.1732,
+    "longitude": 28.8893,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 2
+      }
+    ],
+    "price_per_kwh": 7.9,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 40,
+    "is_active": true,
+    "name": "Eşarj - Vadistanbul AVM, Sarıyer",
+    "address": "Ayazağa, Azerbaycan Cd. No:3, Sarıyer",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.1097,
+    "longitude": 28.9904,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 6
+      },
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 2
+      }
+    ],
+    "price_per_kwh": 8.8,
+    "available": false,
+    "queue_time": 10,
+    "reserved_count": 0
+  },
+  {
+    "id": 41,
+    "is_active": true,
+    "name": "ZES - CarrefourSA, Ataşehir",
+    "address": "İçerenköy, Hal Yolu Üzeri, Ataşehir",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 40.9856,
+    "longitude": 29.1094,
+    "connections": [
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 1
+      }
+    ],
+    "price_per_kwh": 8.9,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 42,
+    "is_active": true,
+    "name": "Opet - Üsküdar",
+    "address": "Altunizade, Kısıklı Cd., Üsküdar",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.025,
+    "longitude": 29.0436,
+    "connections": [
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 1
+      }
+    ],
+    "price_per_kwh": 9,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 43,
+    "is_active": true,
+    "name": "İspark - Tepeüstü Katlı Otopark, Ümraniye",
+    "address": "Ihlamurkuyu Mah, Tepeüstü, Ümraniye",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.0289,
+    "longitude": 29.1354,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 4
+      }
+    ],
+    "price_per_kwh": 7.5,
+    "available": false,
+    "queue_time": 15,
+    "reserved_count": 1
+  },
+  {
+    "id": 44,
+    "is_active": true,
+    "name": "Eşarj - Teknopark İstanbul, Pendik",
+    "address": "Sanayi, Teknopark Blv. No:1, Pendik",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 40.9083,
+    "longitude": 29.3245,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 8
+      }
+    ],
+    "price_per_kwh": 7.85,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 45,
+    "is_active": true,
+    "name": "ZES - Watergarden AVM, Ataşehir",
+    "address": "Barbaros, Kızılbegonya Sk. 10/1, Ataşehir",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 40.9995,
+    "longitude": 29.1171,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 2
+      },
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 1
+      }
+    ],
+    "price_per_kwh": 8.9,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 46,
+    "is_active": true,
+    "name": "Trugo - Kurtköy",
+    "address": "Yenişehir Mah. Millet Cad., Pendik",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 40.9234,
+    "longitude": 29.325,
+    "connections": [
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 2
+      }
+    ],
+    "price_per_kwh": 9.2,
+    "available": false,
+    "queue_time": 5,
+    "reserved_count": 0
+  },
+  {
+    "id": 47,
+    "is_active": true,
+    "name": "Eşarj - ITU Ayazağa Kampüsü, Maslak",
+    "address": "İTÜ Ayazağa Yerleşkesi, Teknokent ARI 3 Otoparkı, Maslak",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.1061,
+    "longitude": 29.0232,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 4
+      }
+    ],
+    "price_per_kwh": 7.7,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 48,
+    "is_active": true,
+    "name": "ZES - Capitol AVM, Altunizade",
+    "address": "Altunizade, Mahir İz Cd., P3 Katı, Üsküdar",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.0264,
+    "longitude": 29.0354,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 3
+      }
+    ],
+    "price_per_kwh": 7.9,
+    "available": false,
+    "queue_time": 10,
+    "reserved_count": 0
+  },
+  {
+    "id": 49,
+    "is_active": true,
+    "name": "Shell Recharge - Zekeriyaköy",
+    "address": "Zekeriyaköy, 4. Cd., Sarıyer",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.173,
+    "longitude": 29.0384,
+    "connections": [
+      {
+        "type_name": "CCS (Type 2)",
+        "type_official": "IEC 62196-3 Configuration FF",
+        "level": 3,
+        "num_connectors": 1
+      }
+    ],
+    "price_per_kwh": 9.1,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  },
+  {
+    "id": 50,
+    "is_active": true,
+    "name": "İspark - Haldun Alagaş Spor Kompleksi Otoparkı, Ümraniye",
+    "address": "Atatürk, Alemdağ Cd. No: 147, Ümraniye",
+    "city": "İstanbul",
+    "region": "İstanbul",
+    "country": "TR",
+    "latitude": 41.0229,
+    "longitude": 29.1032,
+    "connections": [
+      {
+        "type_name": "Type 2 (Socket Only)",
+        "type_official": "IEC 62196-2 Type 2",
+        "level": 2,
+        "num_connectors": 2
+      }
+    ],
+    "price_per_kwh": 7.5,
+    "available": true,
+    "queue_time": 0,
+    "reserved_count": 0
+  }
+]

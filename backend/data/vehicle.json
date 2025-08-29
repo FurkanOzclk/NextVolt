@@ -1,0 +1,142 @@
+[
+    {
+      "id": 1,
+      "brand": "Togg",
+      "model": "T10X V2 (Uzun Menzil)",
+      "battery_capacity_kwh": 88.5,
+      "consumption_kwh_per_100km": 16.9
+    },
+    {
+      "id": 2,
+      "brand": "Tesla",
+      "model": "Model Y Long Range",
+      "battery_capacity_kwh": 75.0,
+      "consumption_kwh_per_100km": 16.5
+    },
+    {
+      "id": 3,
+      "brand": "Renault",
+      "model": "Zoe",
+      "battery_capacity_kwh": 52.0,
+      "consumption_kwh_per_100km": 17.5
+    },
+    {
+      "id": 4,
+      "brand": "Hyundai",
+      "model": "Ioniq 5",
+      "battery_capacity_kwh": 77.4,
+      "consumption_kwh_per_100km": 17.9
+    },
+    {
+      "id": 5,
+      "brand": "Kia",
+      "model": "EV6",
+      "battery_capacity_kwh": 77.4,
+      "consumption_kwh_per_100km": 17.2
+    },
+    {
+      "id": 6,
+      "brand": "Togg",
+      "model": "T10X V1 (Standart Menzil)",
+      "battery_capacity_kwh": 52.4,
+      "consumption_kwh_per_100km": 16.7
+    },
+    {
+      "id": 7,
+      "brand": "Mercedes-Benz",
+      "model": "EQA 250+",
+      "battery_capacity_kwh": 70.5,
+      "consumption_kwh_per_100km": 16.8
+    },
+    {
+      "id": 8,
+      "brand": "MG",
+      "model": "MG4 Comfort",
+      "battery_capacity_kwh": 64.0,
+      "consumption_kwh_per_100km": 16.6
+    },
+    {
+      "id": 9,
+      "brand": "Volkswagen",
+      "model": "ID.4 Pro",
+      "battery_capacity_kwh": 77.0,
+      "consumption_kwh_per_100km": 18.2
+    },
+    {
+      "id": 10,
+      "brand": "Tesla",
+      "model": "Model 3 RWD",
+      "battery_capacity_kwh": 60.0,
+      "consumption_kwh_per_100km": 14.1
+    },
+    {
+      "id": 11,
+      "brand": "BYD",
+      "model": "Atto 3",
+      "battery_capacity_kwh": 60.5,
+      "consumption_kwh_per_100km": 15.6
+    },
+    {
+      "id": 12,
+      "brand": "Porsche",
+      "model": "Taycan 4S",
+      "battery_capacity_kwh": 93.4,
+      "consumption_kwh_per_100km": 21.5
+    },
+    {
+      "id": 13,
+      "brand": "Peugeot",
+      "model": "e-208",
+      "battery_capacity_kwh": 50.0,
+      "consumption_kwh_per_100km": 15.5
+    },
+    {
+      "id": 14,
+      "brand": "Nissan",
+      "model": "Leaf e+",
+      "battery_capacity_kwh": 62.0,
+      "consumption_kwh_per_100km": 18.5
+    },
+    {
+      "id": 15,
+      "brand": "Audi",
+      "model": "Q8 55 e-tron",
+      "battery_capacity_kwh": 106.0,
+      "consumption_kwh_per_100km": 21.8
+    },
+    {
+      "id": 16,
+      "brand": "Renault",
+      "model": "Megane E-Tech",
+      "battery_capacity_kwh": 60.0,
+      "consumption_kwh_per_100km": 16.1
+    },
+    {
+      "id": 17,
+      "brand": "Kia",
+      "model": "Niro EV",
+      "battery_capacity_kwh": 64.8,
+      "consumption_kwh_per_100km": 16.2
+    },
+    {
+      "id": 18,
+      "brand": "Skywell",
+      "model": "ET5",
+      "battery_capacity_kwh": 86.0,
+      "consumption_kwh_per_100km": 20.5
+    },
+    {
+      "id": 19,
+      "brand": "Mercedes-Benz",
+      "model": "EQS 450+",
+      "battery_capacity_kwh": 107.8,
+      "consumption_kwh_per_100km": 17.6
+    },
+    {
+      "id": 20,
+      "brand": "Opel",
+      "model": "Mokka-e",
+      "battery_capacity_kwh": 50.0,
+      "consumption_kwh_per_100km": 17.4
+    }
+  ]
