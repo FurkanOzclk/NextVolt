@@ -6,6 +6,10 @@ const { v4: uuid } = require("uuid");
 
 const app = express();
 
+// Body parser middleware'leri ekle
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // ================== PATHS ==================
 const DATA_DIR = path.join(__dirname, "data");
 const STATIONS_FILE = path.join(DATA_DIR, "station.json");
