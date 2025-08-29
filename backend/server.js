@@ -5,10 +5,8 @@ const path = require("path");
 const { v4: uuid } = require("uuid");
 
 const app = express();
-
-// Body parser middleware'leri ekle
+app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 // ================== PATHS ==================
 const DATA_DIR = path.join(__dirname, "data");
@@ -99,29 +97,13 @@ app.post("/signup", async (req, res) => {
   res.json({ user: { id: newUser.id, username }, token: uuid() });
 });
 
-app.post("/signin", async (req, res) => {
-  try {
-    console.log('=== SIGN IN REQUEST ===');
-    console.log('Request body:', req.body);
-    console.log('Request headers:', req.headers);
-    
-    const { username, password } = req.body;
-    console.log('Username:', username, 'Password:', password);
-    
-    const users = await readJSON(USERS_FILE, []);
-    const user = users.find(u => u.username === username && u.password === password);
-    const token = uuid(); // Assuming a token is generated here
+app.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+  const users = await readJSON(USERS_FILE, []);
+  const user = users.find(u => u.username === username && u.password === password);
+  if (!user) return res.status(401).json({ message: "Invalid credentials" });
 
-    console.log('User found:', user);
-    console.log('Sign in successful for:', username);
-    
-    res.json({ user, token });
-  } catch (error) {
-    console.error('=== SIGN IN ERROR ===');
-    console.error('Error message:', error.message);
-    console.error('Error stack:', error.stack);
-    res.status(500).json({ error: error.message });
-  }
+  res.json({ user: { id: user.id, username: user.username }, token: uuid() });
 });
 
 // ================== FAVORITES ==================
@@ -385,16 +367,7 @@ app.post("/reachable-stations", async (req, res) => {
 (async () => {
   await fs.mkdir(DATA_DIR, { recursive: true });
   const PORT = process.env.PORT || 3000;
-
-  // CORS ayarlarını production için güncelle
-  app.use(cors({
-    origin: process.env.NODE_ENV === 'production' 
-      ? ['https://nextvolt.onrender.com', 'http://localhost:3000', 'http://10.0.2.2:3000'] 
-      : ['http://localhost:3000', 'http://10.0.2.2:3000'],
-    credentials: true
-  }));
-
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running on port ${PORT}`);
+  app.listen(PORT, () => {
+    console.log(`NextVolt backend running at http://localhost:${PORT}`);
   });
 })();

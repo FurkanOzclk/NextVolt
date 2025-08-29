@@ -22,25 +22,6 @@ export default function AuthScreen({ navigation }) {
 	const usernameError = username.length > 0 && username.length < 3;
 	const passwordError = password.length > 0 && password.length < 4;
 
-	const handleSignIn = async () => {
-		try {
-			console.log('=== FRONTEND SIGN IN ===');
-			console.log('Attempting sign in with:', { username, password });
-
-			const response = await signIn(username, password);
-			console.log('Sign in response:', response);
-
-			// ... existing code ...
-		} catch (error) {
-			console.error('=== FRONTEND SIGN IN ERROR ===');
-			console.error('Error:', error);
-			console.error('Error message:', error.message);
-			console.error('Error response:', error.response?.data);
-
-			// ... existing error handling ...
-		}
-	};
-
 	return (
 		<View style={{ flex: 1, backgroundColor: '#f8fafc' }}>
 			<LinearGradient colors={['#7c3aed','#22c55e']} start={{x:0,y:0}} end={{x:1,y:1}} style={{ paddingTop: Math.max(18, insets.top + 6), padding: 16 }}>

@@ -39,6 +39,7 @@ export default function SmartRecommendScreen({ navigation, route }) {
 		try {
 			setLoadingVehicles(true);
 			const vehiclesData = await getVehicles();
+			console.log('Loaded vehicles:', vehiclesData);
 			setVehicles(vehiclesData);
 			if (vehiclesData.length > 0) {
 				setSelectedVehicle(vehiclesData[0].id);
