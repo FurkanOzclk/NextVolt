@@ -1,13 +1,9 @@
 import axios from 'axios';
 import { Platform } from 'react-native';
 
-// Production API URL
+// Production API URL - Always use Render backend
 const productionBase = 'https://nextvolt.onrender.com';
-const localBase = Platform.OS === 'android' ? 'http://10.0.2.2:3000' : 'http://localhost:3000';
-
-// Use production URL in production, local URL in development
-const baseURL = __DEV__ ? localBase : productionBase;
-export const api = axios.create({ baseURL, timeout: 8000 });
+export const api = axios.create({ baseURL: productionBase, timeout: 8000 });
 
 export const getStations = () => api.get('/stations').then(r => r.data);
 export const getStation = (id) => api.get(`/stations/${id}`).then(r => r.data);
