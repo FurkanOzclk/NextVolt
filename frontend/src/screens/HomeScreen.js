@@ -26,6 +26,10 @@ export default function HomeScreen({ navigation }) {
 			if (withLoading) setLoading(true);
 			const data = await getStations();
 			setStations(data);
+		} catch (error) {
+			console.error('Stations yüklenirken hata:', error);
+			// Hata durumunda boş array set et
+			setStations([]);
 		} finally {
 			if (withLoading) setLoading(false);
 		}
@@ -48,21 +52,26 @@ export default function HomeScreen({ navigation }) {
 
 	useEffect(() => {
 		(async () => {
-			const { status } = await Location.requestForegroundPermissionsAsync();
-			if (status === 'granted') {
-				const pos = await Location.getCurrentPositionAsync({});
-				const location = {
-					latitude: pos.coords.latitude,
-					longitude: pos.coords.longitude,
-				};
-				setUserLocation(location);
-				if (!mapRegion) {
-					setMapRegion({
-						...location,
-						latitudeDelta: 0.2,
-						longitudeDelta: 0.2,
-					});
+			try {
+				const { status } = await Location.requestForegroundPermissionsAsync();
+				if (status === 'granted') {
+					const pos = await Location.getCurrentPositionAsync({});
+					const location = {
+						latitude: pos.coords.latitude,
+						longitude: pos.coords.longitude,
+					};
+					setUserLocation(location);
+					if (!mapRegion) {
+						setMapRegion({
+							...location,
+							latitudeDelta: 0.2,
+							longitudeDelta: 0.2,
+						});
+					}
 				}
+			} catch (error) {
+				console.error('Konum alınırken hata:', error);
+				// Konum alınamazsa varsayılan değerler kullanılacak
 			}
 		})();
 	}, []);

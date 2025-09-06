@@ -29,6 +29,9 @@ export default function ReservationsScreen() {
 		try {
 			const data = await getReservations(user.id);
 			setItems(data);
+		} catch (error) {
+			console.error('Rezervasyonlar yüklenirken hata:', error);
+			setItems([]);
 		} finally {
 			setLoading(false);
 		}

@@ -20,6 +20,9 @@ export default function FavoritesScreen({ navigation }) {
 			const favIds = await getFavorites(user.id);
 			const details = await Promise.all(favIds.map((id) => getStation(id)));
 			setItems(details);
+		} catch (error) {
+			console.error('Favoriler yüklenirken hata:', error);
+			setItems([]);
 		} finally {
 			setLoading(false);
 		}

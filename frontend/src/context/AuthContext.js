@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useMemo, useState } from 'react';
 import * as api from '../api/client';
+import { setAuthToken } from '../api/client';
 
 const AuthContext = createContext(null);
 
@@ -15,6 +16,8 @@ export function AuthProvider({ children }) {
 			const data = await api.login(username, password);
 			setUser(data.user);
 			setToken(data.token);
+			// Token'ı axios'a kaydet
+			setAuthToken(data.token);
 			return true;
 		} catch (e) {
 			setError(e.response?.data?.message || 'Giriş başarısız');
@@ -30,6 +33,8 @@ export function AuthProvider({ children }) {
 			const data = await api.signup(username, password);
 			setUser(data.user);
 			setToken(data.token);
+			// Token'ı axios'a kaydet
+			setAuthToken(data.token);
 			return true;
 		} catch (e) {
 			setError(e.response?.data?.message || 'Kayıt başarısız');
@@ -40,7 +45,10 @@ export function AuthProvider({ children }) {
 	};
 
 	const signOut = () => {
-		setUser(null); setToken(null);
+		setUser(null); 
+		setToken(null);
+		// Token'ı axios'tan da temizle
+		setAuthToken(null);
 	};
 
 	const value = useMemo(() => ({ user, token, loading, error, signIn, signUp, signOut }), [user, token, loading, error]);
