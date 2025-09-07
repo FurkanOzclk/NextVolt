@@ -1,11 +1,14 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, View, Dimensions } from 'react-native';
 import { ActivityIndicator, Button, Card, List, Text } from 'react-native-paper';
 import { useAuth } from '../context/AuthContext';
 import { cancelReservation, getReservations } from '../api/client';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useFocusEffect } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
+
+const { width: screenWidth } = Dimensions.get('window');
+const isTablet = screenWidth >= 768; // Tablet detection
 
 function formatRemaining(expiresAt) {
 	const end = new Date(expiresAt).getTime();
@@ -57,9 +60,21 @@ export default function ReservationsScreen() {
 	if (items.length === 0) {
 		return (
 			<View style={{ flex: 1 }}>
-				<LinearGradient colors={['#7c3aed','#22c55e']} start={{x:0,y:0}} end={{x:1,y:1}} style={{ paddingTop: Math.max(18, insets.top + 6), padding: 16 }}>
-					<Text variant="titleLarge" style={{ color: 'white', fontWeight: '700' }}>Rezervasyonlar</Text>
-					<Text style={{ color: 'white', opacity: 0.9, fontSize: 12 }}>Aktif rezervasyon yok</Text>
+				<LinearGradient colors={['#7c3aed','#22c55e']} start={{x:0,y:0}} end={{x:1,y:1}} style={{ 
+					padding: isTablet ? 32 : 20, 
+					paddingTop: Math.max(isTablet ? 36 : 24, insets.top + 8) 
+				}}>
+					<Text variant={isTablet ? "headlineLarge" : "headlineMedium"} style={{ 
+						color: 'white', 
+						fontWeight: '700',
+						fontSize: isTablet ? 36 : 24
+					}}>Rezervasyonlar</Text>
+					<Text style={{ 
+						color: 'white', 
+						opacity: 0.9, 
+						marginTop: 8, 
+						fontSize: isTablet ? 20 : 14 
+					}}>Aktif rezervasyon yok</Text>
 				</LinearGradient>
 				<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
 					<Text>Aktif rezervasyonunuz yok.</Text>
@@ -70,9 +85,21 @@ export default function ReservationsScreen() {
 
 	return (
 		<View style={{ flex: 1 }}>
-			<LinearGradient colors={['#7c3aed','#22c55e']} start={{x:0,y:0}} end={{x:1,y:1}} style={{ paddingTop: Math.max(18, insets.top + 6), padding: 16 }}>
-				<Text variant="titleLarge" style={{ color: 'white', fontWeight: '700' }}>Rezervasyonlar</Text>
-				<Text style={{ color: 'white', opacity: 0.9, fontSize: 12 }}>{items.length} aktif rezervasyon</Text>
+			<LinearGradient colors={['#7c3aed','#22c55e']} start={{x:0,y:0}} end={{x:1,y:1}} style={{ 
+				padding: isTablet ? 32 : 20, 
+				paddingTop: Math.max(isTablet ? 36 : 24, insets.top + 8) 
+			}}>
+				<Text variant={isTablet ? "headlineLarge" : "headlineMedium"} style={{ 
+					color: 'white', 
+					fontWeight: '700',
+					fontSize: isTablet ? 36 : 24
+				}}>Rezervasyonlar</Text>
+				<Text style={{ 
+					color: 'white', 
+					opacity: 0.9, 
+					marginTop: 8, 
+					fontSize: isTablet ? 20 : 14 
+				}}>{items.length} aktif rezervasyon</Text>
 			</LinearGradient>
 			<FlatList
 				style={{ paddingTop: 8, paddingBottom: Math.max(12, insets.bottom) }}

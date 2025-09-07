@@ -27,7 +27,12 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.furkan.ozcelik.frontend"
+      "package": "com.furkan.ozcelik.frontend",
+      "config": {
+        "googleMaps": {
+          "apiKey": "REMOVED_API_KEY"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -36,6 +41,9 @@
       "eas": {
         "projectId": "1c30a960-6dac-4ff0-b95b-dd16155adcf3"
       }
-    }
+    },
+    "plugins": [
+      "expo-maps"
+    ]
   }
 }

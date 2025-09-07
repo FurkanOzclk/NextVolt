@@ -1,11 +1,14 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, View, Dimensions } from 'react-native';
 import { ActivityIndicator, Card, Text } from 'react-native-paper';
 import { getFavorites, getStation } from '../api/client';
 import { useAuth } from '../context/AuthContext';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useFocusEffect } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
+
+const { width: screenWidth } = Dimensions.get('window');
+const isTablet = screenWidth >= 768; // Tablet detection
 
 export default function FavoritesScreen({ navigation }) {
 	const { user } = useAuth();
@@ -36,9 +39,21 @@ export default function FavoritesScreen({ navigation }) {
 
 	return (
 		<View style={{ flex: 1 }}>
-			<LinearGradient colors={['#7c3aed','#22c55e']} start={{x:0,y:0}} end={{x:1,y:1}} style={{ paddingTop: Math.max(18, insets.top + 6), padding: 16 }}>
-				<Text variant="titleLarge" style={{ color: 'white', fontWeight: '700' }}>Favoriler</Text>
-				<Text style={{ color: 'white', opacity: 0.9, fontSize: 12 }}>{items.length} istasyon favorilerinizde</Text>
+			<LinearGradient colors={['#7c3aed','#22c55e']} start={{x:0,y:0}} end={{x:1,y:1}} style={{ 
+				padding: isTablet ? 32 : 20, 
+				paddingTop: Math.max(isTablet ? 36 : 24, insets.top + 8) 
+			}}>
+				<Text variant={isTablet ? "headlineLarge" : "headlineMedium"} style={{ 
+					color: 'white', 
+					fontWeight: '700',
+					fontSize: isTablet ? 36 : 24
+				}}>Favoriler</Text>
+				<Text style={{ 
+					color: 'white', 
+					opacity: 0.9, 
+					marginTop: 8, 
+					fontSize: isTablet ? 20 : 14 
+				}}>{items.length} istasyon favorilerinizde</Text>
 			</LinearGradient>
 			<FlatList
 				style={{ paddingTop: 8, paddingBottom: Math.max(12, insets.bottom) }}

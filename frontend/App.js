@@ -41,6 +41,7 @@ const paperTheme = {
 };
 
 function Tabs() {
+	console.log('📱 Tabs component render');
 	return (
 		<Tab.Navigator
 			screenOptions={({ route }) => ({
