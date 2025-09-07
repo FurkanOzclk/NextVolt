@@ -11,8 +11,50 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useFocusEffect } from '@react-navigation/native';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
-const isTablet = screenWidth >= 768; // Tablet detection
-const isLargeTablet = screenWidth >= 1024; // Large tablet detection
+
+// Device type detection with more granular control
+const isTablet = screenWidth >= 768;
+const isLargeTablet = screenWidth >= 1024;
+const isSmallPhone = screenWidth < 375; // iPhone SE and smaller
+const isPhone = screenWidth >= 375 && screenWidth < 768;
+
+// Button size configuration based on device type
+const getButtonConfig = () => {
+	if (isLargeTablet) {
+		return {
+			height: 56,
+			paddingHorizontal: 32,
+			fontSize: 18,
+			gap: 20,
+			containerPadding: 24
+		};
+	} else if (isTablet) {
+		return {
+			height: 48,
+			paddingHorizontal: 24,
+			fontSize: 16,
+			gap: 16,
+			containerPadding: 20
+		};
+	} else if (isSmallPhone) {
+		return {
+			height: 32,
+			paddingHorizontal: 12,
+			fontSize: 11,
+			gap: 6,
+			containerPadding: 10
+		};
+	} else {
+		// Regular phone
+		return {
+			height: 40,
+			paddingHorizontal: 16,
+			fontSize: 14,
+			gap: 8,
+			containerPadding: 12
+		};
+	}
+};
 
 export default function HomeScreen({ navigation }) {
 	const [stations, setStations] = useState([]);
@@ -296,61 +338,67 @@ export default function HomeScreen({ navigation }) {
 			</View>
 
 			{/* Action buttons */}
-			<View style={{ 
-				paddingHorizontal: isTablet ? 20 : 12, 
-				marginTop: isTablet ? 16 : 8 
-			}}>
-				<View style={{ 
-					flexDirection: 'row', 
-					gap: isTablet ? 16 : 8,
-					justifyContent: 'flex-start'
-				}}>
-					<Button 
-						mode={showMap ? 'contained' : 'contained-tonal'} 
-						onPress={() => setShowMap(!showMap)} 
-						contentStyle={{ 
-							height: isTablet ? 48 : 36,
-							paddingHorizontal: isTablet ? 24 : 16
-						}} 
-						labelStyle={{ 
-							fontSize: isTablet ? 16 : 12,
-							fontWeight: '600'
-						}}
-					>
-						{showMap ? 'Liste' : 'Harita'}
-					</Button>
-					<Button 
-						mode="contained" 
-						onPress={() => navigation.navigate('AkilliOneri')} 
-						contentStyle={{ 
-							height: isTablet ? 48 : 36,
-							paddingHorizontal: isTablet ? 24 : 16
-						}} 
-						labelStyle={{ 
-							fontSize: isTablet ? 16 : 12,
-							fontWeight: '600'
-						}}
-					>
-						Akıllı Öneri
-					</Button>
-					{showMap && userLocation ? (
-						<Button 
-							mode="contained-tonal" 
-							onPress={showMyLocation} 
-							contentStyle={{ 
-								height: isTablet ? 48 : 36,
-								paddingHorizontal: isTablet ? 24 : 16
-							}} 
-							labelStyle={{ 
-								fontSize: isTablet ? 16 : 12,
-								fontWeight: '600'
-							}}
-						>
-							Konumumu Göster
-						</Button>
-					) : null}
-				</View>
-			</View>
+			{(() => {
+				const buttonConfig = getButtonConfig();
+				return (
+					<View style={{ 
+						paddingHorizontal: buttonConfig.containerPadding, 
+						marginTop: isTablet ? 16 : 8 
+					}}>
+						<View style={{ 
+							flexDirection: 'row', 
+							gap: buttonConfig.gap,
+							justifyContent: 'flex-start',
+							flexWrap: isSmallPhone ? 'wrap' : 'nowrap'
+						}}>
+							<Button 
+								mode={showMap ? 'contained' : 'contained-tonal'} 
+								onPress={() => setShowMap(!showMap)} 
+								contentStyle={{ 
+									height: buttonConfig.height,
+									paddingHorizontal: buttonConfig.paddingHorizontal
+								}} 
+								labelStyle={{ 
+									fontSize: buttonConfig.fontSize,
+									fontWeight: '600'
+								}}
+							>
+								{showMap ? 'Liste' : 'Harita'}
+							</Button>
+							<Button 
+								mode="contained" 
+								onPress={() => navigation.navigate('AkilliOneri')} 
+								contentStyle={{ 
+									height: buttonConfig.height,
+									paddingHorizontal: buttonConfig.paddingHorizontal
+								}} 
+								labelStyle={{ 
+									fontSize: buttonConfig.fontSize,
+									fontWeight: '600'
+								}}
+							>
+								Akıllı Öneri
+							</Button>
+							{showMap && userLocation ? (
+								<Button 
+									mode="contained-tonal" 
+									onPress={showMyLocation} 
+									contentStyle={{ 
+										height: buttonConfig.height,
+										paddingHorizontal: buttonConfig.paddingHorizontal
+									}} 
+									labelStyle={{ 
+										fontSize: buttonConfig.fontSize,
+										fontWeight: '600'
+									}}
+								>
+									Konumumu Göster
+								</Button>
+							) : null}
+						</View>
+					</View>
+				);
+			})()}
 
 			{showMap && mapsAvailable ? (
 				<View style={{ 

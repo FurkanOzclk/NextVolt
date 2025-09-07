@@ -6,7 +6,50 @@ import { recommend, getVehicles, getReachableStations } from '../api/client';
 import FormTextInput from '../components/FormTextInput';
 
 const { width: screenWidth } = Dimensions.get('window');
-const isTablet = screenWidth >= 768; // Tablet detection
+
+// Device type detection with more granular control
+const isTablet = screenWidth >= 768;
+const isLargeTablet = screenWidth >= 1024;
+const isSmallPhone = screenWidth < 375; // iPhone SE and smaller
+const isPhone = screenWidth >= 375 && screenWidth < 768;
+
+// Button size configuration based on device type
+const getButtonConfig = () => {
+	if (isLargeTablet) {
+		return {
+			height: 56,
+			paddingHorizontal: 32,
+			fontSize: 18,
+			gap: 20,
+			containerPadding: 24
+		};
+	} else if (isTablet) {
+		return {
+			height: 48,
+			paddingHorizontal: 24,
+			fontSize: 16,
+			gap: 16,
+			containerPadding: 20
+		};
+	} else if (isSmallPhone) {
+		return {
+			height: 32,
+			paddingHorizontal: 12,
+			fontSize: 11,
+			gap: 6,
+			containerPadding: 10
+		};
+	} else {
+		// Regular phone
+		return {
+			height: 40,
+			paddingHorizontal: 16,
+			fontSize: 14,
+			gap: 8,
+			containerPadding: 12
+		};
+	}
+};
 
 const plugs = ['CCS (Type 2)','Type 2 (Socket Only)','CHAdeMO'];
 
@@ -279,9 +322,27 @@ export default function SmartRecommendScreen({ navigation, route }) {
 				))}
 			</View>
 
-			<Button mode="contained" onPress={onSubmit} loading={loading} disabled={disabled}>
-				{useVehicle ? 'Akıllı Öneri' : 'Manuel Öner'}
-			</Button>
+			{(() => {
+				const buttonConfig = getButtonConfig();
+				return (
+					<Button 
+						mode="contained" 
+						onPress={onSubmit} 
+						loading={loading} 
+						disabled={disabled}
+						contentStyle={{ 
+							height: buttonConfig.height,
+							paddingHorizontal: buttonConfig.paddingHorizontal
+						}} 
+						labelStyle={{ 
+							fontSize: buttonConfig.fontSize,
+							fontWeight: '600'
+						}}
+					>
+						{useVehicle ? 'Akıllı Öneri' : 'Manuel Öner'}
+					</Button>
+				);
+			})()}
 
 			{error ? <HelperText type="error">{error}</HelperText> : null}
 			
@@ -372,9 +433,24 @@ export default function SmartRecommendScreen({ navigation, route }) {
 									</View>
 								</Card.Content>
 								<Card.Actions>
-									<Button onPress={() => navigation.navigate('Istasyon', { station })}>
-										Detaya git
-									</Button>
+									{(() => {
+										const buttonConfig = getButtonConfig();
+										return (
+											<Button 
+												onPress={() => navigation.navigate('Istasyon', { station })}
+												contentStyle={{ 
+													height: buttonConfig.height * 0.8, // Slightly smaller for card actions
+													paddingHorizontal: buttonConfig.paddingHorizontal * 0.8
+												}} 
+												labelStyle={{ 
+													fontSize: buttonConfig.fontSize * 0.9,
+													fontWeight: '600'
+												}}
+											>
+												Detaya git
+											</Button>
+										);
+									})()}
 								</Card.Actions>
 							</Card>
 						))
