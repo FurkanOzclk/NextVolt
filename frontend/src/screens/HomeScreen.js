@@ -31,7 +31,7 @@ const getButtonConfig = () => {
 	} else if (isTablet) {
 		return {
 			height: 48,
-			paddingHorizontal: 24,
+			paddingHorizontal: 20,
 			fontSize: 16,
 			gap: 16,
 			containerPadding: 20
@@ -39,19 +39,19 @@ const getButtonConfig = () => {
 	} else if (isSmallPhone) {
 		return {
 			height: 32,
-			paddingHorizontal: 12,
+			paddingHorizontal: 8,
 			fontSize: 11,
 			gap: 6,
-			containerPadding: 10
+			containerPadding: 8
 		};
 	} else {
 		// Regular phone
 		return {
 			height: 40,
-			paddingHorizontal: 16,
+			paddingHorizontal: 6,
 			fontSize: 14,
-			gap: 8,
-			containerPadding: 12
+			gap: 4,
+			containerPadding: 8
 		};
 	}
 };
