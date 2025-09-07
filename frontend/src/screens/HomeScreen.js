@@ -367,7 +367,7 @@ export default function HomeScreen({ navigation }) {
 								<html>
 								<head>
 									<meta name="viewport" content="width=device-width, initial-scale=1.0">
-									<script src="https://maps.googleapis.com/maps/api/js?key=REMOVED_API_KEY&libraries=places"></script>
+									<script src="https://maps.googleapis.com/maps/api/js?key=${process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places"></script>
 								</head>
 								<body style="margin:0; padding:0;">
 									<div id="map" style="width:100%; height:100vh;"></div>

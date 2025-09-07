@@ -147,7 +147,7 @@ NextVolt projesi **iki ana bölümden** oluşmaktadır:
 - **Ne işe yarar?** Harita görünümü sağlar
 - **Neden seçildi?** En yaygın kullanılan harita servisi
 - **Kullanıldığı yerler:** Ana sayfa harita görünümü, istasyon konumları
-- **API Key:** REMOVED_API_KEY
+- **API Key:** [Environment variable olarak saklanıyor]
 
 #### **Expo Location**
 - **Ne işe yarar?** Kullanıcının konumunu alır
