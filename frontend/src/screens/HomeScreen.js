@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState, useCallback } from 'react';
-import { Dimensions, FlatList, View } from 'react-native';
-import { ActivityIndicator, Button, Card, Chip, Text } from 'react-native-paper';
+import { Dimensions, FlatList, View, Modal, Animated } from 'react-native';
+import { ActivityIndicator, Button, Card, Chip, Text, Portal, Snackbar } from 'react-native-paper';
 import * as Location from 'expo-location';
 import { getStations, recommend } from '../api/client';
 import { useAuth } from '../context/AuthContext';
@@ -64,6 +64,8 @@ export default function HomeScreen({ navigation }) {
 	const [mapRegion, setMapRegion] = useState(null);
 	const [mapsAvailable, setMapsAvailable] = useState(true);
 	const [chartsAvailable, setChartsAvailable] = useState(true);
+	const [showWelcomeMessage, setShowWelcomeMessage] = useState(false);
+	const [welcomeAnimation] = useState(new Animated.Value(0));
 	
 	// Charts'ın çalışıp çalışmadığını test et
 	useEffect(() => {
@@ -78,6 +80,32 @@ export default function HomeScreen({ navigation }) {
 	}, []);
 	const { user } = useAuth();
 	const insets = useSafeAreaInsets();
+
+	// Hoş geldin mesajını göster
+	useEffect(() => {
+		if (user && user.username) {
+			setShowWelcomeMessage(true);
+			// Animasyonu başlat
+			Animated.timing(welcomeAnimation, {
+				toValue: 1,
+				duration: 500,
+				useNativeDriver: true,
+			}).start();
+			
+			// 3 saniye sonra mesajı kapat
+			const timer = setTimeout(() => {
+				Animated.timing(welcomeAnimation, {
+					toValue: 0,
+					duration: 300,
+					useNativeDriver: true,
+				}).start(() => {
+					setShowWelcomeMessage(false);
+				});
+			}, 3000);
+			
+			return () => clearTimeout(timer);
+		}
+	}, [user, welcomeAnimation]);
 
 	const loadStations = useCallback(async (withLoading = false) => {
 		try {
@@ -198,6 +226,72 @@ export default function HomeScreen({ navigation }) {
 
 	return (
 		<View style={{ flex: 1 }}>
+			{/* Hoş geldin mesajı */}
+			{showWelcomeMessage && (
+				<Portal>
+					<Animated.View
+						style={{
+							position: 'absolute',
+							top: insets.top + 20,
+							left: 20,
+							right: 20,
+							zIndex: 1000,
+							opacity: welcomeAnimation,
+							transform: [
+								{
+									translateY: welcomeAnimation.interpolate({
+										inputRange: [0, 1],
+										outputRange: [-50, 0],
+									}),
+								},
+							],
+						}}
+					>
+						<Card
+							style={{
+								backgroundColor: '#ffffff',
+								elevation: 8,
+								shadowColor: '#000',
+								shadowOffset: { width: 0, height: 4 },
+								shadowOpacity: 0.3,
+								shadowRadius: 8,
+								borderRadius: 16,
+								borderLeftWidth: 4,
+								borderLeftColor: '#22c55e',
+							}}
+						>
+							<Card.Content
+								style={{
+									padding: 20,
+									alignItems: 'center',
+								}}
+							>
+								<Text
+									style={{
+										fontSize: isTablet ? 24 : 20,
+										fontWeight: '700',
+										color: '#1f2937',
+										textAlign: 'center',
+										marginBottom: 8,
+									}}
+								>
+									🎉 Hoş geldin {user?.username}! 🎉
+								</Text>
+								<Text
+									style={{
+										fontSize: isTablet ? 16 : 14,
+										color: '#6b7280',
+										textAlign: 'center',
+									}}
+								>
+									NextVolt'a hoş geldin! Yakındaki şarj istasyonlarını keşfetmeye hazır mısın?
+								</Text>
+							</Card.Content>
+						</Card>
+					</Animated.View>
+				</Portal>
+			)}
+
 			<LinearGradient colors={['#7c3aed','#22c55e']} start={{x:0,y:0}} end={{x:1,y:1}} style={{ 
 				padding: isTablet ? 32 : 20, 
 				paddingTop: Math.max(isTablet ? 36 : 24, insets.top + 8) 
