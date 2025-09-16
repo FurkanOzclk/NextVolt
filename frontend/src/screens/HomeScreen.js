@@ -296,11 +296,24 @@ export default function HomeScreen({ navigation }) {
 				padding: isTablet ? 32 : 20, 
 				paddingTop: Math.max(isTablet ? 36 : 24, insets.top + 8) 
 			}}>
-				<Text variant={isTablet ? "headlineLarge" : "headlineMedium"} style={{ 
-					color: 'white', 
-					fontWeight: '700',
-					fontSize: isTablet ? 36 : 24
-				}}>NextVolt</Text>
+				<View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start', flexWrap: 'wrap' }}>
+					<Text variant={isTablet ? "headlineLarge" : "headlineMedium"} style={{ 
+						color: 'white', 
+						fontWeight: '700',
+						fontSize: isTablet ? 36 : 24
+					}}>NextVolt</Text>
+					{user?.username && (
+						<Text style={{ 
+							color: 'white', 
+							opacity: 0.8,
+							fontSize: isTablet ? 20 : 16,
+							fontWeight: '500',
+							marginLeft: 8
+						}}>
+							{user.username}
+						</Text>
+					)}
+				</View>
 				<Text style={{ 
 					color: 'white', 
 					opacity: 0.9, 
@@ -514,6 +527,23 @@ export default function HomeScreen({ navigation }) {
 								<body style="margin:0; padding:0;">
 									<div id="map" style="width:100%; height:100vh;"></div>
 									<script>
+										// Station click handler
+										function handleStationClick(stationDataStr) {
+											console.log('Button clicked!');
+											try {
+												const stationData = stationDataStr.replace(/&quot;/g, '"');
+												const station = JSON.parse(stationData);
+												console.log('Station data:', station);
+												window.ReactNativeWebView.postMessage(JSON.stringify({
+													type: 'station_click',
+													station: station
+												}));
+												console.log('Message sent to React Native');
+											} catch (error) {
+												console.error('Error handling station click:', error);
+											}
+										}
+										
 										function initMap() {
 											const map = new google.maps.Map(document.getElementById('map'), {
 												zoom: 10,
@@ -527,6 +557,9 @@ export default function HomeScreen({ navigation }) {
 												rotateControl: false,
 												fullscreenControl: false
 											});
+											
+											// Tek bir info window tanımla - tüm marker'lar bunu kullanacak
+											let currentInfoWindow = null;
 											
 											// User location marker
 											const userLocation = ${JSON.stringify(userLocation)};
@@ -557,33 +590,42 @@ export default function HomeScreen({ navigation }) {
 													}
 												});
 												
-												// Create info window content with station data embedded
-												const stationJson = JSON.stringify(stationItem);
-												const infoWindow = new google.maps.InfoWindow({
-													disableAutoPan: false,
-													pixelOffset: new google.maps.Size(0, -10),
-													content: \`
-														<div style="padding: 12px; min-width: 200px; font-family: Arial, sans-serif;">
-															<h3 style="margin: 0 0 8px 0; color: #1f2937; font-size: 16px; display: flex; align-items: center; gap: 8px;">
-																<span style="color: \${stationItem.available ? '#22c55e' : '#f59e0b'}; font-size: 18px;">⚡</span>
-																\${stationItem.name}
-															</h3>
-															<p style="margin: 0 0 8px 0; color: #6b7280; font-size: 14px;">\${stationItem.address}</p>
-															<div style="display: flex; gap: 8px; margin-bottom: 8px;">
-																<span style="background: \${stationItem.available ? '#dcfce7' : '#fef3c7'}; color: \${stationItem.available ? '#166534' : '#92400e'}; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500;">
-																	\${stationItem.available ? 'Müsait' : 'Dolu'}
-																</span>
-																\${stationItem.price_per_kwh ? \`<span style="background: #dbeafe; color: #1e40af; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500;">\${stationItem.price_per_kwh} ₺/kWh</span>\` : ''}
-															</div>
-															<button onclick="console.log('Button clicked!'); console.log('Station data:', \${stationJson}); window.ReactNativeWebView.postMessage(JSON.stringify({type: 'station_click', station: \${stationJson}})); console.log('Message sent!');" style="background: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-size: 14px; cursor: pointer; width: 100%;">
-																Detayları Gör
-															</button>
+												// Create content for this station
+												const stationData = JSON.stringify(stationItem).replace(/"/g, '&quot;');
+												const content = \`
+													<div style="padding: 12px; min-width: 200px; font-family: Arial, sans-serif;">
+														<h3 style="margin: 0 0 8px 0; color: #1f2937; font-size: 16px; display: flex; align-items: center; gap: 8px;">
+															<span style="color: \${stationItem.available ? '#22c55e' : '#f59e0b'}; font-size: 18px;">⚡</span>
+															\${stationItem.name}
+														</h3>
+														<p style="margin: 0 0 8px 0; color: #6b7280; font-size: 14px;">\${stationItem.address}</p>
+														<div style="display: flex; gap: 8px; margin-bottom: 8px;">
+															<span style="background: \${stationItem.available ? '#dcfce7' : '#fef3c7'}; color: \${stationItem.available ? '#166534' : '#92400e'}; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500;">
+																\${stationItem.available ? 'Müsait' : 'Dolu'}
+															</span>
+															\${stationItem.price_per_kwh ? \`<span style="background: #dbeafe; color: #1e40af; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500;">\${stationItem.price_per_kwh} ₺/kWh</span>\` : ''}
 														</div>
-													\`
-												});
+														<button onclick="handleStationClick('\${stationData}')" style="background: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-size: 14px; cursor: pointer; width: 100%;">
+															Detayları Gör
+														</button>
+													</div>
+												\`;
 												
 												marker.addListener('click', () => {
-													infoWindow.open(map, marker);
+													// Önceki info window'u kapat
+													if (currentInfoWindow) {
+														currentInfoWindow.close();
+													}
+													
+													// Yeni info window oluştur
+													currentInfoWindow = new google.maps.InfoWindow({
+														disableAutoPan: false,
+														pixelOffset: new google.maps.Size(0, -10),
+														content: content
+													});
+													
+													// Yeni info window'u aç
+													currentInfoWindow.open(map, marker);
 												});
 											});
 										}
@@ -600,12 +642,13 @@ export default function HomeScreen({ navigation }) {
 							try {
 								const data = JSON.parse(event.nativeEvent.data);
 								console.log('Parsed data:', data);
-								if (data.type === 'station_click') {
+								if (data && data.type === 'station_click' && data.station) {
 									console.log('Navigating to station:', data.station);
 									navigation.navigate('Istasyon', { station: data.station });
 								}
 							} catch (error) {
 								console.error('WebView message error:', error);
+								console.error('Raw message:', event.nativeEvent.data);
 							}
 						}}
 						onError={(error) => {
