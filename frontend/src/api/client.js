@@ -5,6 +5,35 @@ import { Platform } from 'react-native';
 const productionBase = 'https://nextvolt.onrender.com';
 export const api = axios.create({ baseURL: productionBase, timeout: 8000 });
 
+// Token yönetimi için global değişken
+let authToken = null;
+
+// Token setter fonksiyonu
+export const setAuthToken = (token) => {
+	authToken = token;
+	if (token) {
+		api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+	} else {
+		delete api.defaults.headers.common['Authorization'];
+	}
+};
+
+// Token getter fonksiyonu
+export const getAuthToken = () => authToken;
+
+// Response interceptor - 401 hatalarını yakala
+api.interceptors.response.use(
+	(response) => response,
+	(error) => {
+		if (error.response?.status === 401) {
+			// Token geçersiz, temizle
+			setAuthToken(null);
+			// AuthContext'e bildir (bu daha sonra eklenecek)
+		}
+		return Promise.reject(error);
+	}
+);
+
 export const getStations = () => api.get('/stations').then(r => r.data);
 export const getStation = (id) => api.get(`/stations/${id}`).then(r => r.data);
 

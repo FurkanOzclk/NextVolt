@@ -2,9 +2,10 @@ import React from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Provider as PaperProvider, MD3LightTheme } from 'react-native-paper';
+import { Provider as PaperProvider, MD3LightTheme, ActivityIndicator, Text } from 'react-native-paper';
 import { StatusBar } from 'expo-status-bar';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { View } from 'react-native';
 
 // Screens
 import HomeScreen from './src/screens/HomeScreen';
@@ -14,6 +15,7 @@ import AuthScreen from './src/screens/AuthScreen';
 import SmartRecommendScreen from './src/screens/SmartRecommendScreen';
 import ReservationsScreen from './src/screens/ReservationsScreen';
 import { AuthProvider, useAuth } from './src/context/AuthContext';
+import ErrorBoundary from './src/components/ErrorBoundary';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -39,6 +41,7 @@ const paperTheme = {
 };
 
 function Tabs() {
+	console.log('📱 Tabs component render');
 	return (
 		<Tab.Navigator
 			screenOptions={({ route }) => ({
@@ -62,19 +65,31 @@ function Tabs() {
 }
 
 function AppContent() {
-	const { user } = useAuth();
+	const { user, loading } = useAuth();
+	
+	// Loading durumunda loading göster
+	if (loading) {
+		return (
+			<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#f8fafc' }}>
+				<ActivityIndicator size="large" color="#7c3aed" />
+				<Text style={{ marginTop: 10, color: '#64748b' }}>Yükleniyor...</Text>
+			</View>
+		);
+	}
 	
 	return (
 		<NavigationContainer theme={navTheme}>
 			<StatusBar style="dark" />
-			<Stack.Navigator>
+			<Stack.Navigator screenOptions={{ headerShown: false }}>
 				{!user ? (
-					<Stack.Screen name="Auth" component={AuthScreen} options={{ headerShown: false }} />
+					<Stack.Screen name="Auth" component={AuthScreen} />
 				) : (
-					<Stack.Screen name="Anasayfa" component={Tabs} options={{ headerShown: false }} />
+					<>
+						<Stack.Screen name="MainTabs" component={Tabs} />
+						<Stack.Screen name="Istasyon" component={StationDetailScreen} options={{ headerShown: true, title: 'İstasyon' }} />
+						<Stack.Screen name="AkilliOneri" component={SmartRecommendScreen} options={{ headerShown: true, title: 'Akıllı Öneri' }} />
+					</>
 				)}
-				<Stack.Screen name="Istasyon" component={StationDetailScreen} options={{ title: 'İstasyon' }} />
-				<Stack.Screen name="AkilliOneri" component={SmartRecommendScreen} options={{ title: 'Akıllı Öneri' }} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
@@ -82,10 +97,12 @@ function AppContent() {
 
 export default function App() {
 	return (
-		<PaperProvider theme={paperTheme}>
-			<AuthProvider>
-				<AppContent />
-			</AuthProvider>
-		</PaperProvider>
+		<ErrorBoundary>
+			<PaperProvider theme={paperTheme}>
+				<AuthProvider>
+					<AppContent />
+				</AuthProvider>
+			</PaperProvider>
+		</ErrorBoundary>
 	);
 }

@@ -1,9 +1,55 @@
 import React, { useState, useEffect } from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, Dimensions, FlatList } from 'react-native';
 import { Button, Card, Chip, HelperText, Text, SegmentedButtons, ActivityIndicator, Menu, Divider } from 'react-native-paper';
 import * as Location from 'expo-location';
 import { recommend, getVehicles, getReachableStations } from '../api/client';
 import FormTextInput from '../components/FormTextInput';
+
+const { width: screenWidth } = Dimensions.get('window');
+
+// Device type detection with more granular control
+const isTablet = screenWidth >= 768;
+const isLargeTablet = screenWidth >= 1024;
+const isSmallPhone = screenWidth < 375; // iPhone SE and smaller
+const isPhone = screenWidth >= 375 && screenWidth < 768;
+
+// Button size configuration based on device type
+const getButtonConfig = () => {
+	if (isLargeTablet) {
+		return {
+			height: 56,
+			paddingHorizontal: 32,
+			fontSize: 18,
+			gap: 20,
+			containerPadding: 24
+		};
+	} else if (isTablet) {
+		return {
+			height: 48,
+			paddingHorizontal: 24,
+			fontSize: 16,
+			gap: 16,
+			containerPadding: 20
+		};
+	} else if (isSmallPhone) {
+		return {
+			height: 32,
+			paddingHorizontal: 12,
+			fontSize: 11,
+			gap: 6,
+			containerPadding: 10
+		};
+	} else {
+		// Regular phone
+		return {
+			height: 40,
+			paddingHorizontal: 16,
+			fontSize: 14,
+			gap: 8,
+			containerPadding: 12
+		};
+	}
+};
 
 const plugs = ['CCS (Type 2)','Type 2 (Socket Only)','CHAdeMO'];
 
@@ -19,7 +65,7 @@ export default function SmartRecommendScreen({ navigation, route }) {
 	const [loading, setLoading] = useState(false);
 	const [results, setResults] = useState([]);
 	const [error, setError] = useState('');
-	const [useVehicle, setUseVehicle] = useState(false);
+	const [useVehicle, setUseVehicle] = useState(true);
 	const [vehicleMenuVisible, setVehicleMenuVisible] = useState(false);
 
 	useEffect(() => {
@@ -124,16 +170,24 @@ export default function SmartRecommendScreen({ navigation, route }) {
 	const disabled = loading || (useVehicle ? vehicleBatteryErr : manualBatteryErr) || rangeErr || destinationErr || vehicleErr;
 
 	return (
-		<ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: 16, gap: 12 }}>
-			<Text variant="titleLarge">Akıllı Öneri</Text>
-			<Text style={{ color: '#64748b' }}>Araç bilgileri veya manuel verilerle en iyi istasyonu bulalım.</Text>
+		<ScrollView style={{ flex: 1 }} contentContainerStyle={{ 
+			padding: isTablet ? 24 : 16, 
+			gap: isTablet ? 16 : 12 
+		}}>
+			<Text variant={isTablet ? "headlineMedium" : "titleLarge"} style={{
+				fontSize: isTablet ? 28 : 20
+			}}>Akıllı Öneri</Text>
+			<Text style={{ 
+				color: '#64748b',
+				fontSize: isTablet ? 16 : 14
+			}}>Araç bilgileri veya manuel verilerle en iyi istasyonu bulalım.</Text>
 			
 			<SegmentedButtons
 				value={useVehicle ? 'vehicle' : 'manual'}
 				onValueChange={(value) => setUseVehicle(value === 'vehicle')}
 				buttons={[
-					{ value: 'vehicle', label: 'Araç Bilgisi' },
-					{ value: 'manual', label: 'Manuel' }
+					{ value: 'vehicle', label: 'Aracını Seç' },
+					{ value: 'manual', label: 'Manuel Giriş' }
 				]}
 			/>
 
@@ -268,46 +322,139 @@ export default function SmartRecommendScreen({ navigation, route }) {
 				))}
 			</View>
 
-			<Button mode="contained" onPress={onSubmit} loading={loading} disabled={disabled}>
-				{useVehicle ? 'Araç ile Öner' : 'Akıllı Öner'}
-			</Button>
+			{(() => {
+				const buttonConfig = getButtonConfig();
+				return (
+					<Button 
+						mode="contained" 
+						onPress={onSubmit} 
+						loading={loading} 
+						disabled={disabled}
+						contentStyle={{ 
+							height: buttonConfig.height,
+							paddingHorizontal: buttonConfig.paddingHorizontal
+						}} 
+						labelStyle={{ 
+							fontSize: buttonConfig.fontSize,
+							fontWeight: '600'
+						}}
+					>
+						{useVehicle ? 'Akıllı Öneri' : 'Manuel Öner'}
+					</Button>
+				);
+			})()}
 
 			{error ? <HelperText type="error">{error}</HelperText> : null}
 			
 			{results.length > 0 && (
 				<>
-					<Text variant="titleMedium" style={{ marginTop: 16, marginBottom: 8 }}>
+					<Text variant={isTablet ? "titleLarge" : "titleMedium"} style={{ 
+						marginTop: isTablet ? 24 : 16, 
+						marginBottom: isTablet ? 16 : 8,
+						fontSize: isTablet ? 20 : 16
+					}}>
 						Önerilen İstasyonlar ({results.length})
 					</Text>
-					{results.map((station, index) => (
-						<Card key={station.id} style={{ marginBottom: 8 }}>
-							<Card.Title 
-								title={`${index + 1}. ${station.name}`} 
-								subtitle={`${station.distance_km} km • Skor: ${station.score}`} 
-							/>
-							<Card.Content>
-								<Text>{station.address}</Text>
-								<View style={{ flexDirection: 'row', flexWrap: 'wrap', marginTop: 8, gap: 6 }}>
-									{station.price_per_kwh && (
-										<Chip compact icon="cash">{station.price_per_kwh} ₺/kWh</Chip>
-									)}
-									<Chip compact icon={station.available ? 'check-circle' : 'clock'}>
-										{station.available ? 'Müsait' : `Sıra: ${station.queue_time} dk`}
-									</Chip>
-									{station.connections && station.connections.length > 0 && (
-										<Chip compact icon="ev-station">
-											{station.connections.length} bağlantı
+					{isTablet ? (
+						<FlatList
+							data={results}
+							keyExtractor={(item) => String(item.id)}
+							numColumns={2}
+							columnWrapperStyle={{ justifyContent: 'space-between' }}
+							scrollEnabled={false}
+							renderItem={({ item: station, index }) => (
+								<Card style={{ 
+									marginBottom: isTablet ? 16 : 8,
+									width: (screenWidth - 80) / 2,
+									marginHorizontal: 8
+								}}>
+									<Card.Title 
+										title={`${index + 1}. ${station.name}`} 
+										subtitle={`${station.distance_km} km • Skor: ${station.score}`}
+										titleStyle={{ fontSize: isTablet ? 16 : 14 }}
+										subtitleStyle={{ fontSize: isTablet ? 13 : 12 }}
+									/>
+									<Card.Content>
+										<Text style={{ fontSize: isTablet ? 14 : 12 }}>{station.address}</Text>
+										<View style={{ 
+											flexDirection: 'row', 
+											flexWrap: 'wrap', 
+											marginTop: isTablet ? 12 : 8, 
+											gap: 6 
+										}}>
+											{station.price_per_kwh && (
+												<Chip compact icon="cash" style={{ height: isTablet ? 32 : 24 }}>
+													{station.price_per_kwh} ₺/kWh
+												</Chip>
+											)}
+											<Chip compact icon={station.available ? 'check-circle' : 'clock'} style={{ height: isTablet ? 32 : 24 }}>
+												{station.available ? 'Müsait' : `Sıra: ${station.queue_time} dk`}
+											</Chip>
+											{station.connections && station.connections.length > 0 && (
+												<Chip compact icon="ev-station" style={{ height: isTablet ? 32 : 24 }}>
+													{station.connections.length} bağlantı
+												</Chip>
+											)}
+										</View>
+									</Card.Content>
+									<Card.Actions>
+										<Button 
+											onPress={() => navigation.navigate('Istasyon', { station })}
+											contentStyle={{ height: isTablet ? 40 : 36 }}
+											labelStyle={{ fontSize: isTablet ? 14 : 12 }}
+										>
+											Detaya git
+										</Button>
+									</Card.Actions>
+								</Card>
+							)}
+						/>
+					) : (
+						results.map((station, index) => (
+							<Card key={station.id} style={{ marginBottom: 8 }}>
+								<Card.Title 
+									title={`${index + 1}. ${station.name}`} 
+									subtitle={`${station.distance_km} km • Skor: ${station.score}`} 
+								/>
+								<Card.Content>
+									<Text>{station.address}</Text>
+									<View style={{ flexDirection: 'row', flexWrap: 'wrap', marginTop: 8, gap: 6 }}>
+										{station.price_per_kwh && (
+											<Chip compact icon="cash">{station.price_per_kwh} ₺/kWh</Chip>
+										)}
+										<Chip compact icon={station.available ? 'check-circle' : 'clock'}>
+											{station.available ? 'Müsait' : `Sıra: ${station.queue_time} dk`}
 										</Chip>
-									)}
-								</View>
-							</Card.Content>
-							<Card.Actions>
-								<Button onPress={() => navigation.navigate('Istasyon', { station })}>
-									Detaya git
-								</Button>
-							</Card.Actions>
-						</Card>
-					))}
+										{station.connections && station.connections.length > 0 && (
+											<Chip compact icon="ev-station">
+												{station.connections.length} bağlantı
+											</Chip>
+										)}
+									</View>
+								</Card.Content>
+								<Card.Actions>
+									{(() => {
+										const buttonConfig = getButtonConfig();
+										return (
+											<Button 
+												onPress={() => navigation.navigate('Istasyon', { station })}
+												contentStyle={{ 
+													height: buttonConfig.height * 0.8, // Slightly smaller for card actions
+													paddingHorizontal: buttonConfig.paddingHorizontal * 0.8
+												}} 
+												labelStyle={{ 
+													fontSize: buttonConfig.fontSize * 0.9,
+													fontWeight: '600'
+												}}
+											>
+												Detaya git
+											</Button>
+										);
+									})()}
+								</Card.Actions>
+							</Card>
+						))
+					)}
 				</>
 			)}
 		</ScrollView>
